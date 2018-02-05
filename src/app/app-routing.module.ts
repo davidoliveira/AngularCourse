@@ -5,6 +5,10 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
+    path: 'account',
+    loadChildren: 'app/account/account.module#AccountModule'
+  },
+  {
     path: 'contacts',
     loadChildren: 'app/contacts/contacts.module#ContactsModule'
   },
