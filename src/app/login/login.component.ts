@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.accountService.signIn(this.model).subscribe((response: IUserToken) => {
+    this.accountService.signIn(this.model).subscribe((response: IUserToken) => {      
       this.router.navigate(['payments']);
-    }, ((error: any) => {
+    }, ((error: any) => {      
       this.displayErrorMsg = true;
     }));
   }

@@ -3,7 +3,7 @@
       Criar Conta
   </div>
   <div class="card-body">
-
+    {{model.email}}
     <div class="alert alert-danger" role="alert">
       <i class="fas fa-exclamation-triangle"></i> Erro!
     </div>
@@ -15,7 +15,7 @@
     <form>    
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" placeholder="O seu email" name="email" required>    
+        <input type="email" class="form-control" placeholder="O seu email" name="email" [(ngModel)]="model.email" required>    
       </div>
       <div class="form-group">
           <label for="password">Password</label>
