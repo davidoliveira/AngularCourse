@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCreate } from '../../_shared/account/user-create';
+import { Router } from '@angular/router';
+import { AccountService } from '../../_shared/account/account.service';
 
 @Component({
   selector: 'app-create',
@@ -7,11 +9,16 @@ import { UserCreate } from '../../_shared/account/user-create';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  public model = new UserCreate('das', 'das');
+  public model = new UserCreate(null, null);
 
-  constructor() { }
+  constructor(
+    private accountService: AccountService
+  , private router: Router) { }
 
   ngOnInit() {
+    if (this.accountService.isAuthenticated()) {
+      this.router.navigate(['payments']);
+    }
   }
 
 }

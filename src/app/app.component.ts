@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationStart, RouterEvent } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { AccountService } from './_shared/account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   public currentDate: Date;
+  public hideHeaderMenu: boolean;
 
-  constructor() {
+  constructor(
+      private router: Router
+    , private accountService: AccountService
+  ) {
     this.currentDate = new Date();
+    this.hideHeaderMenu = true;
   }
 
   ngOnInit() {
+    this.router.events.forEach((event: RouterEvent) => {
+      if (event instanceof NavigationStart) {
+        this.hideHeaderMenu = !this.accountService.isAuthenticated();
+      }
+      // NavigationStart
+      // NavigationEnd
+      // NavigationCancel
+      // NavigationError
+      // RoutesRecognized
+    });
+  }
 
+  signOut(): void {
+    this.accountService.signOut();
+    this.router.navigate(['login']);
   }
 }

@@ -20,13 +20,15 @@ export class LoginComponent implements OnInit {
     , private router: Router) { }
 
   ngOnInit() {
-
+    if (this.accountService.isAuthenticated()) {
+      this.router.navigate(['payments']);
+    }
   }
 
   onSubmit() {
-    this.accountService.signIn(this.model).subscribe((response: IUserToken) => {      
+    this.accountService.signIn(this.model).subscribe((response: IUserToken) => {
       this.router.navigate(['payments']);
-    }, ((error: any) => {      
+    }, ((error: any) => {
       this.displayErrorMsg = true;
     }));
   }
