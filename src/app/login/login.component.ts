@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserLogin } from '../_shared/account/user-login';
-import { IUserToken } from '../_shared/account/user-token';
+import { UserLogin } from '../_shared/account/models/user-login';
+import { IUserToken } from '../_shared/account/models/user-token';
 
 import { AccountService } from '../_shared/account/account.service';
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit($event) {
     this.accountService.signIn(this.model).subscribe((response: IUserToken) => {
       this.router.navigate(['payments']);
     }, ((error: any) => {

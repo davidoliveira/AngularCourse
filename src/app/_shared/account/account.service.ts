@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
-import { IUserLogin } from './user-login';
-import { IUserToken } from './user-token';
-import { IUserCreate } from './user-create';
-import { IUserCreated } from './user-created';
+import { IUserLogin } from './models/user-login';
+import { IUserToken } from './models/user-token';
+import { IUserCreate } from './models/user-create';
+import { IUserCreated } from './models/user-created';
 
 @Injectable()
 export class AccountService {
@@ -16,7 +16,7 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   public signIn(model: IUserLogin): Observable<IUserToken> {
-    return this.http.post<IUserToken>(environment.apiUrl + '/Users/Login', model).pipe(
+    return this.http.post<IUserToken>(`${environment.apiUrl}/users/login`, model).pipe(
       map((data: IUserToken) => {
         localStorage.setItem(this.TOKEN_KEY, JSON.stringify(data));
         return data;
@@ -38,20 +38,27 @@ export class AccountService {
   }
 
   public isAuthenticated(): boolean {
-
     const token = this.getUserToken();
-
-    // Check whether the token is expired and return
-    // true or false
-    //return !this.jwtHelper.isTokenExpired(token);
-    return token != null;
+    return !this.isTokenExpired(token);
   }
 
   public create(model: IUserCreate): Observable<IUserCreated> {
-    return this.http.post<IUserCreated>(environment.apiUrl + '/Users', model);
+    return this.http.post<IUserCreated>(`${environment.apiUrl}/users`, model);
   }
 
-  // getUserLoggedIn(): Observable<IUserCreated> {
-  //   //return this.http.post<IUserCreated>(environment.apiUrl + '/Users', model);
-  // }
+  private isTokenExpired(token: IUserToken): boolean {
+    if (token != null) {
+      const expiresAt = new Date(token.created).getTime() + (token.ttl * 1000);
+      return expiresAt < new Date().getTime();
+    }
+    return true;
+  }
+
+  getUserById(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/${id}`);
+  }
+
+  getUserLoggedIn(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/${this.getUserToken().userId}`);
+  }
 }

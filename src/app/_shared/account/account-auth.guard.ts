@@ -7,8 +7,8 @@ import { AccountService } from './account.service';
 export class AccountAuthGuard implements CanActivate {
 
   constructor(
-    public accountService: AccountService
-  , public router: Router
+    private accountService: AccountService
+  , private router: Router
 
   ) {}
 
@@ -16,7 +16,7 @@ export class AccountAuthGuard implements CanActivate {
       next: ActivatedRouteSnapshot
     , state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-      const expectedRole = next.data.expectedRole; //example if we want to check also role
+      const expectedRole = next.data.expectedRole; //example if we want to check also role of the user
 
       if (!this.accountService.isAuthenticated()) {
         this.router.navigate(['login']);

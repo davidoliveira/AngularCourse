@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentsService } from '../_shared/payments.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private paymentsService: PaymentsService
+  ) { }
 
   ngOnInit() {
+
   }
 
+  getPayment():void {
+    this.paymentsService.getPaymentById(1).subscribe((payment: any) => {
+
+    });
+  }
 }

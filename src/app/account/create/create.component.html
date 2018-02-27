@@ -2,29 +2,34 @@
   <div class="card-header">
       Criar Conta
   </div>
-  <div class="card-body">    
-    <div class="alert alert-danger" role="alert">
-      <i class="fas fa-exclamation-triangle"></i> Erro!
+  <div class="card-body">
+    <div *ngIf="errorMsg != null" class="alert alert-danger" role="alert">
+      <i class="fas fa-exclamation-triangle"></i> {{errorMsg}}
     </div>
 
-    <div class="alert alert-success" role="alert">
-      <i class="fas fa-check-circle"></i> Conta Criada com sucesso! Pode efetuar login.
+    <div *ngIf="isCreatedWithSuccess" class="alert alert-success" role="alert">
+      <i class="fas fa-check-circle"></i> Conta Criada com sucesso! Pode efetuar <a routerLink="/login"><strong>login</strong></a>.
     </div>
 
-    <form>    
+    <form id="account-create-form" (submit)="onSubmit($event)" #accountCreateForm="ngForm">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" placeholder="O seu nome" name="name" [(ngModel)]="model.name" required>
+          </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" placeholder="O seu email" name="email" [(ngModel)]="model.email" required>    
+        <input type="email" class="form-control" placeholder="O seu email" name="email" [(ngModel)]="model.email" required>
       </div>
       <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" placeholder="A sua palavra-passe" name="password" required>    
+          <input type="password" class="form-control" placeholder="A sua palavra-passe" name="password" [(ngModel)]="model.password" required>
       </div>
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="agree" name="agree">
+        <input type="checkbox" class="custom-control-input" id="agree" name="agree" [(ngModel)]="isAgreed">
         <label class="custom-control-label" for="agree">Concordo com os Termos & Condições</label>
       </div>
-      <button type="submit" class="btn btn-primary">Submeter »</button>  
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="!accountCreateForm.form.valid">Submeter »</button>
     </form>
   </div>
 </div>

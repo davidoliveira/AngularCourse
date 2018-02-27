@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountAuthGuard } from './_shared/account/account-auth.guard';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'account',

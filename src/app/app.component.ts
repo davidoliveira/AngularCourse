@@ -11,6 +11,7 @@ import { AccountService } from './_shared/account/account.service';
 export class AppComponent implements OnInit {
   public currentDate: Date;
   public hideHeaderMenu: boolean;
+  public name: string = null;
 
   constructor(
       private router: Router
@@ -24,6 +25,11 @@ export class AppComponent implements OnInit {
     this.router.events.forEach((event: RouterEvent) => {
       if (event instanceof NavigationStart) {
         this.hideHeaderMenu = !this.accountService.isAuthenticated();
+        if (this.accountService.isAuthenticated()) {
+          this.accountService.getUserLoggedIn().subscribe((user: any) => {
+            this.name = user.name;
+          });
+        }
       }
       // NavigationStart
       // NavigationEnd

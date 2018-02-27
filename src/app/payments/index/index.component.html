@@ -8,29 +8,26 @@
           <table class="table table-sm table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Data</th>
+                <th scope="col" class="text-right">Valor</th>
+                <th scope="col">Descrição</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+              <tr (click)="getPayment()">
+                <td>2018-01-08</td>
+                <td class="text-right">30,00 €</td>
+                <td>Quotização de Janeiro de 2018 do 10ºA</td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+              <tr (click)="getPayment()">
+                <td>2018-01-05</td>
+                <td class="text-right">275,42 €</td>
+                <td>Assistência Técnica dos Elevadores do 1º Trimestre de 2018</td>
               </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+              <tr (click)="getPayment()">
+                <td>2018-01-03</td>
+                <td class="text-right">94.19 €</td>
+                <td>Eletricidade</td>
               </tr>
             </tbody>
           </table>

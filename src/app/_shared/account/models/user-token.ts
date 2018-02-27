@@ -1,6 +1,6 @@
 export interface IUserToken {
     id: string;
     ttl: number;
-    created: string;
+    created: Date;
     userId: number;
 }
