@@ -22,7 +22,7 @@ export class AccountTokenInterceptor implements HttpInterceptor {
         if (this.accountService.isAuthenticated()) {
           request = request.clone({
             setHeaders: {
-                Authorization: `${this.accountService.getUserToken().id}`
+              Authorization: `${this.accountService.getUserToken().id}`
             }
           });
         }

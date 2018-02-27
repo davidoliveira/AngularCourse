@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, RouterEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AccountService } from './_shared/account/account.service';
+import { debug, debuglog } from 'util';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +41,8 @@ export class AppComponent implements OnInit {
   }
 
   signOut(): void {
-    this.accountService.signOut();
-    this.router.navigate(['login']);
+    this.accountService.signOut().subscribe((response: any) => {
+      this.router.navigate(['login']);
+    });
   }
 }

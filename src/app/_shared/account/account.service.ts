@@ -24,9 +24,14 @@ export class AccountService {
     );
   }
 
-  public signOut(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-
+  public signOut(): Observable<any> {
+    const userToken = this.getUserToken();
+    return this.http.delete<any>(`${environment.apiUrl}/users/${userToken.userId}/accessTokens/${userToken.id}`).pipe(
+      map((data:any) => {
+        localStorage.removeItem(this.TOKEN_KEY);
+        return data;
+      })
+    );
   }
 
   public getUserToken(): IUserToken {
