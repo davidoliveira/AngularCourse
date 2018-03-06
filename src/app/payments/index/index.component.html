@@ -14,20 +14,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr (click)="getPayment()">
-                <td>2018-01-08</td>
-                <td class="text-right">30,00 €</td>
-                <td>Quotização de Janeiro de 2018 do 10ºA</td>
-              </tr>
-              <tr (click)="getPayment()">
-                <td>2018-01-05</td>
-                <td class="text-right">275,42 €</td>
-                <td>Assistência Técnica dos Elevadores do 1º Trimestre de 2018</td>
-              </tr>
-              <tr (click)="getPayment()">
-                <td>2018-01-03</td>
-                <td class="text-right">94.19 €</td>
-                <td>Eletricidade</td>
+              <tr *ngFor="let payment of payments">
+                <td>{{payment.dateOfPayment | date:'yyyy-MM-dd'}}</td>
+                <td class="text-right">{{payment.amount | currency:'EUR'}}</td>
+                <td>{{payment.description}}</td>
               </tr>
             </tbody>
           </table>

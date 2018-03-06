@@ -27,9 +27,11 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationStart) {
         this.hideHeaderMenu = !this.accountService.isAuthenticated();
         if (this.accountService.isAuthenticated()) {
-          this.accountService.getUserLoggedIn().subscribe((user: any) => {
+          this.accountService.getUserLoggedIn().subscribe((user: User) => {
             this.name = user.name;
-          });
+          }, ((error: any) => {
+
+          }));
         }
       }
       // NavigationStart
@@ -43,6 +45,8 @@ export class AppComponent implements OnInit {
   signOut(): void {
     this.accountService.signOut().subscribe((response: any) => {
       this.router.navigate(['login']);
-    });
+    }, ((error: any) => {
+
+    }));
   }
 }

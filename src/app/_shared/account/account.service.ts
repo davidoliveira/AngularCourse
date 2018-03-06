@@ -27,7 +27,7 @@ export class AccountService {
   public signOut(): Observable<any> {
     const userToken = this.getUserToken();
     return this.http.delete<any>(`${environment.apiUrl}/users/${userToken.userId}/accessTokens/${userToken.id}`).pipe(
-      map((data:any) => {
+      map((data: any) => {
         localStorage.removeItem(this.TOKEN_KEY);
         return data;
       })
@@ -59,11 +59,11 @@ export class AccountService {
     return true;
   }
 
-  getUserById(id: number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/users/${id}`);
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
 
-  getUserLoggedIn(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/users/${this.getUserToken().userId}`);
+  getUserLoggedIn(): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/users/${this.getUserToken().userId}`);
   }
 }
