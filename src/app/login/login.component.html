@@ -8,7 +8,6 @@
   <div class="form-group">
     <input type="email" class="form-control" placeholder="O seu email" name="email" [(ngModel)]="model.email" required>
     <i class="fas icon fa-user"></i>
-    <div>{{model.email}}</div>
   </div>
   <div class="form-group">
     <input type="password" class="form-control" placeholder="A sua palavra-passe" name="password" [(ngModel)]="model.password" required>
@@ -18,6 +17,6 @@
     <input type="checkbox" class="custom-control-input" id="rememberMe" name="rememberMe" [(ngModel)]="model.rememberMe">
     <label class="custom-control-label" for="rememberMe">Lembrar de mim?</label>
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Entrar »</button>         
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Entrar »</button>
   <p class="text-center"><a [routerLink]="['/account/create']">Não tem conta? Criar</a></p>
 </form>

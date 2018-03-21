@@ -18,13 +18,16 @@ export class ContactsService {
     );
   }
 
-    public getAllContacts(condominiumId: number, pageId: number, pageSize: number): Observable<Contact[]> {
-      const filter = {
-        where: {condominiumId: condominiumId},
-        skip: (pageId - 1) * pageSize,
-        limit: pageSize
-      };
-      return this.http.get<Contact[]>(`${environment.apiUrl}/contacts/?filter=${JSON.stringify(filter)}`);
-    }
+  public getAllContacts(condominiumId: number, pageId: number, pageSize: number): Observable<Contact[]> {
+    const filter = {
+      where: {condominiumId: condominiumId},
+      skip: (pageId - 1) * pageSize,
+      limit: pageSize
+    };
+    return this.http.get<Contact[]>(`${environment.apiUrl}/contacts/?filter=${JSON.stringify(filter)}`);
+  }
 
+  public saveContact(contact: Contact) {
+    return this.http.put<Contact>(`${environment.apiUrl}/contacts`, JSON.stringify(contact));
+  }
 }

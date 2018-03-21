@@ -30,6 +30,8 @@ ngOnInit() {
 getAllContacts(condominiumId: number): void {
   this.contactsService.getAllContacts(condominiumId, 1, 10).subscribe((contacts: Contact[]) => {
     this.contacts = contacts;
+
+
   });
 }
 
