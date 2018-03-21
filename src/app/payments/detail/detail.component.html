@@ -1,3 +1,6 @@
-<p>
-  detail works!
-</p>
+<p *ngIf="payment == null">Nenhum pagamento seleccionado!</p>
+
+<div *ngIf="payment != null">
+  <p>{{payment.description}}</p>
+  <button (click)="highlight()">highlight</button>
+</div>
