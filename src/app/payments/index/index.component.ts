@@ -10,7 +10,7 @@ import { AccountService } from '../../_shared/account/account.service';
 export class IndexComponent implements OnInit {
   public payments: Payment[];
   public paymentsCount: number;
-  public paymentSelected: Payment;
+  public paymentSelected: Payment = null;
 
   constructor(
       private accountService: AccountService
@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let subscriber = this.accountService.getUserLoggedIn().subscribe((user: User) => {
+    const subscriber = this.accountService.getUserLoggedIn().subscribe((user: User) => {
       this.getAllPayments(user.condominiumId);
 
       this.paymentsService.countPayments(user.condominiumId).subscribe((total: number) => {
@@ -34,17 +34,24 @@ export class IndexComponent implements OnInit {
   }
 
   selectPayment(payment: Payment): void {
+    if (this.paymentSelected != null) {
+      this.offHighlight(this.paymentSelected.id);
+    }
+
     this.paymentSelected = payment;
-    //console.log(this.paymentSelected);
   }
 
   onHighlight(idPayment: number) {
-    console.log(idPayment);
-    const el: HTMLElement = document.getElementById('payment-' + idPayment) as HTMLElement;
-    if(el.style.fontWeight === 'bold') {
-      el.style.fontWeight = '';
-    } else {
-      el.style.fontWeight = 'bold';
-    }
+    const el: HTMLElement = document.getElementById('payment-description-' + idPayment) as HTMLElement;
+    el.style.fontWeight = 'bold';
+  }
+
+  offHighlight(idPayment: number) {
+    const el: HTMLElement = document.getElementById('payment-description-' + idPayment) as HTMLElement;
+    el.style.fontWeight = '';
+  }
+
+  remove(): void {
+
   }
 }

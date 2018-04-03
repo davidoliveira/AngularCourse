@@ -1,6 +1,45 @@
 <p *ngIf="payment == null">Nenhum pagamento seleccionado!</p>
 
 <div *ngIf="payment != null">
-  <p>{{payment.description}}</p>
-  <button (click)="highlight()">highlight</button>
+
+    <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+              <label for="contactFromId">Origem</label>
+              <select class="form-control" id="contactFromId">
+                <option></option>
+              </select>
+          </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="contactToId">Destino</label>
+                <select class="form-control" id="contactToId">
+                  <option></option>
+                </select>
+            </div>
+        </div>
+      </div>
+  <div class="row">
+    <div class="col-12">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="nome" [(ngModel)]="payment.description">
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="payment.dateOfPayment">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="valor" [(ngModel)]="payment.amount">
+        </div>
+      </div>
+  </div>
+
+  <button class="btn btn-success" (click)="save()"><i class="fas fa-sync-alt"></i> Atualizar</button>
+  <button class="btn btn-danger" (click)="remove()"><i class="fas fa-trash-alt"></i> Remover</button>
 </div>

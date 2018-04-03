@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { IndexComponent } from './index/index.component';
@@ -11,7 +12,8 @@ import { SharedModule } from '../_shared/shared.module';
   imports: [
     CommonModule,
     ContactsRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   declarations: [
     IndexComponent,
