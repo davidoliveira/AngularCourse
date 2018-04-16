@@ -32,6 +32,6 @@ export class PaymentsService {
   }
 
   public savePayment(payment: Payment) {
-    return this.http.put<Payment>(`${environment.apiUrl}/payments`, JSON.stringify(payment));
+    return this.http.put<Payment>(`${environment.apiUrl}/payments`, payment);
   }
 }

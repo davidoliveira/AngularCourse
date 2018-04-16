@@ -28,6 +28,6 @@ export class ContactsService {
   }
 
   public saveContact(contact: Contact) {
-    return this.http.put<Contact>(`${environment.apiUrl}/contacts`, JSON.stringify(contact));
+    return this.http.put<Contact>(`${environment.apiUrl}/contacts`, contact);
   }
 }
