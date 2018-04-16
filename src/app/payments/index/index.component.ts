@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentsService } from '../_shared/payments.service';
 import { AccountService } from '../../_shared/account/account.service';
+import { PaymentsControlService } from '../_shared/payments-control.service';
 
 @Component({
   selector: 'app-payments-index',
@@ -15,6 +16,7 @@ export class IndexComponent implements OnInit {
   constructor(
       private accountService: AccountService
     , private paymentsService: PaymentsService
+    , private paymentsControlService: PaymentsControlService
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,15 @@ export class IndexComponent implements OnInit {
 
       this.paymentsService.countPayments(user.condominiumId).subscribe((total: number) => {
         this.paymentsCount = total;
+      });
+
+      this.paymentsControlService.paymentDeleted$.subscribe(payment => {
+          console.log('payment deleted - index');
+
+          const index = this.payments.indexOf(payment);
+          if (index > -1) {
+            this.payments.splice(index, 1);
+        }
       });
     });
   }
@@ -51,7 +62,7 @@ export class IndexComponent implements OnInit {
     el.style.fontWeight = '';
   }
 
-  remove(): void {
-
+  remove(payment: Payment): void {
+    this.paymentsControlService.deletePayment(payment);
   }
 }

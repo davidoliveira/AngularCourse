@@ -30,4 +30,8 @@ export class PaymentsService {
       map((data: any) => data.count)
     );
   }
+
+  public savePayment(payment: Payment) {
+    return this.http.put<Payment>(`${environment.apiUrl}/payments`, JSON.stringify(payment));
+  }
 }

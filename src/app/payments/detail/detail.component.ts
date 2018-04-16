@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitte
 import { AccountService } from '../../_shared/account/account.service';
 import { PaymentsService } from '../_shared/payments.service';
 import { ContactsService } from '../../contacts/_shared/contacts.service';
+import { PaymentsControlService } from '../_shared/payments-control.service';
 
 @Component({
   selector: 'app-payments-detail',
@@ -19,10 +20,17 @@ export class DetailComponent implements OnInit, OnChanges {
     private accountService: AccountService
   , private paymentsService: PaymentsService
   , private contactsService: ContactsService
+  , private paymentsControlService: PaymentsControlService
 ) { }
 
   ngOnInit() {
+    this.paymentsControlService.paymentDeleted$.subscribe(payment => {
+      this.payment = null;
+    });
+  }
 
+  remove(): void {
+    this.paymentsControlService.deletePayment(this.payment);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -33,11 +41,9 @@ export class DetailComponent implements OnInit, OnChanges {
   }
 
   save(): void {
-
-  }
-
-  remove(): void {
-
+    this.paymentsService.savePayment(this.payment).subscribe((response: any) => {
+      console.log(response);
+    });
   }
 }
 

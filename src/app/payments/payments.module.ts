@@ -10,6 +10,7 @@ import { PaymentsService } from './_shared/payments.service';
 import { SharedModule } from '../_shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ContactsService } from '../contacts/_shared/contacts.service';
+import { PaymentsControlService } from './_shared/payments-control.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { ContactsService } from '../contacts/_shared/contacts.service';
     NgbModule
   ],
   declarations: [IndexComponent, DetailComponent],
-  providers: [PaymentsService, ContactsService]
+  providers: [PaymentsService, ContactsService, PaymentsControlService]
 })
 export class PaymentsModule { }
