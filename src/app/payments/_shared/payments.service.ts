@@ -19,7 +19,18 @@ export class PaymentsService {
       skip: (pageId - 1) * pageSize,
       limit: pageSize
     };
-    return this.http.get<Payment[]>(`${environment.apiUrl}/payments/?filter=${JSON.stringify(filter)}`);
+
+    
+    return this.http.get<Payment[]>(`${environment.apiUrl}/payments/?filter=${JSON.stringify(filter)}`).pipe(
+      map((payments:Payment[]) => {
+        payments.forEach( payment => {
+          payment.dateOfPayment = new Date(payment.dateOfPayment);
+          payment.dateCreated = new Date(payment.dateCreated);
+          payment.dateUpdated = new Date(payment.dateUpdated);
+        })
+        return payments;
+      })
+    );
   }
 
   public countPayments(condominiumId: number): Observable<Number> {

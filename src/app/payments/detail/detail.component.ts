@@ -3,13 +3,16 @@ import { AccountService } from '../../_shared/account/account.service';
 import { PaymentsService } from '../_shared/payments.service';
 import { ContactsService } from '../../contacts/_shared/contacts.service';
 import { PaymentsControlService } from '../_shared/payments-control.service';
+import {NgbDateAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateNativeAdapter } from "../../_shared/ui/NgbDateNativeAdapter";
 
 @Component({
   selector: 'app-payments-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
-  providers: []
+  providers:[]
 })
+
 export class DetailComponent implements OnInit, OnChanges {
   @Input('payment') payment: Payment = null;
   @Output() onHighlight = new EventEmitter<number>();
@@ -34,7 +37,8 @@ export class DetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('selected payment has changed');
+    if(!this.payment)
+      return;
     if(this.payment != null) {
       this.onHighlight.emit(this.payment.id);
     }
@@ -45,5 +49,6 @@ export class DetailComponent implements OnInit, OnChanges {
       console.log(response);
     });
   }
+
 }
 

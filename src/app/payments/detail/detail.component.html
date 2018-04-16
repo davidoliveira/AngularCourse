@@ -29,20 +29,16 @@
   </div>
   <div class="row">
     <div class="col-6">
-        <div class="form-group">
-          <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="payment.dateOfPayment" ngbDatepicker #d="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                <i class="fas fa-calendar-alt"></i>
-              </button>
-            </div>
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" #c2="ngModel" [(ngModel)]="payment.dateOfPayment" ngbDatepicker #d2="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+              <i class="fas fa-calendar-alt"></i>
+            </button>
           </div>
         </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" [(ngModel)]="payment.dateOfPayment">
-        </div>
+      </div>
     </div>
     <div class="col-6">
         <div class="form-group">
