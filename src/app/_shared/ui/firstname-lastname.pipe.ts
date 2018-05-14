@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'firstnameLastname'
 })
 export class FirstnameLastnamePipe implements PipeTransform {
-
   transform(value: any, args?: any): any {
     const words = value.split(' ');
     if (words.length === 1) {
@@ -15,5 +14,4 @@ export class FirstnameLastnamePipe implements PipeTransform {
     }
     return '';
   }
-
 }

@@ -3,7 +3,7 @@ import { NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
 export class NgbDateNativeAdapter extends NgbDateAdapter<Date> {
-
+  // https://ng-bootstrap.github.io/#/components/datepicker/examples
   fromModel(date: Date): NgbDateStruct {
     return (date && date.getFullYear) ? {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()} : null;
   }

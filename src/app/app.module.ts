@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from './_shared/shared.module';
 import { AccountTokenInterceptor } from './_shared/account/account-token.interceptor';
-import { NgbDateNativeAdapter } from "./_shared/ui/NgbDateNativeAdapter";
+import { NgbDateNativeAdapter } from './_shared/ui/NgbDateNativeAdapter';
+import { MyErrorHandler } from './_shared/error-handler';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NgbDateNativeAdapter } from "./_shared/ui/NgbDateNativeAdapter";
       multi: true
     },
     {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}
+    //,{provide: ErrorHandler, useClass: MyErrorHandler}
   ],
   bootstrap: [AppComponent]
 })

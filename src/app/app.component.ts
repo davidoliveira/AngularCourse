@@ -10,7 +10,6 @@ import { debug, debuglog } from 'util';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public currentDate: Date;
   public hideHeaderMenu: boolean;
   public name: string = null;
 
@@ -18,7 +17,6 @@ export class AppComponent implements OnInit {
       private router: Router
     , private accountService: AccountService
   ) {
-    this.currentDate = new Date();
     this.hideHeaderMenu = true;
   }
 
