@@ -21,30 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.forEach((event: RouterEvent) => {
-      if (event instanceof NavigationStart) {
-        this.hideHeaderMenu = !this.accountService.isAuthenticated();
-        if (this.accountService.isAuthenticated()) {
-          this.accountService.getUserLoggedIn().subscribe((user: User) => {
-            this.name = user.name;
-          }, ((error: any) => {
 
-          }));
-        }
-      }
-      // NavigationStart
-      // NavigationEnd
-      // NavigationCancel
-      // NavigationError
-      // RoutesRecognized
-    });
   }
 
-  signOut(): void {
-    this.accountService.signOut().subscribe((response: any) => {
-      this.router.navigate(['login']);
-    }, ((error: any) => {
-
-    }));
-  }
 }

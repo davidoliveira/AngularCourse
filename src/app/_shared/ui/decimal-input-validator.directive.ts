@@ -18,7 +18,6 @@ export class DecimalInputValidatorDirective {
 
     if (isNaN(inputValue as any)) {
       this.el.nativeElement.style.borderColor = 'red';
-      //this.model.valueAccessor.writeValue(0);
     } else {
       this.el.nativeElement.style.borderColor = '#ced4da';
     }

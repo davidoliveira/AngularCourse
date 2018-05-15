@@ -1,0 +1,33 @@
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    &nbsp;
+    <ng-container *ngIf="!hideHeaderMenu">
+      <a class="navbar-brand" href="#">KONDOMINIO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/payments" routerLinkActive="active"><i class="fas fa-list-alt"></i> PAGAMENTOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contacts/owners" routerLinkActive="active"><i class="fas fa-users"></i> CONDÓMINOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contacts/suppliers" routerLinkActive="active"><i class="fas fa-truck"></i> FORNECEDORES</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li *ngIf="name != null" class="nav-item">
+                <a class="nav-link"><i class="fas fa-user"></i> Olá {{name}}!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="signOut()"><i class="fas fa-sign-out-alt"></i> SAIR</a>
+            </li>
+          </ul>
+      </div>
+    </ng-container>
+  </nav>
+</header>

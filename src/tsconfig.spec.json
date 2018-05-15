@@ -1,6 +1,10 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",
