@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterEvent, NavigationStart } from '@angular/router';
 import { AccountService } from '../../account/account.service';
+import { IUser } from '../../account/models/user';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
       if (event instanceof NavigationStart) {
         this.hideHeaderMenu = !this.accountService.isAuthenticated();
         if (this.accountService.isAuthenticated()) {
-          this.accountService.getUserLoggedIn().subscribe((user: User) => {
+          this.accountService.getUserLoggedIn().subscribe((user: IUser) => {
             this.name = user.name;
           }, ((error: any) => {
 

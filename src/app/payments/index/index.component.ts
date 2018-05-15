@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaymentsService } from '../_shared/payments.service';
 import { AccountService } from '../../_shared/account/account.service';
 import { PaymentsControlService } from '../_shared/payments-control.service';
+import { IUser } from '../../_shared/account/models/user';
 
 @Component({
   selector: 'app-payments-index',
@@ -20,7 +21,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const subscriber = this.accountService.getUserLoggedIn().subscribe((user: User) => {
+    const subscriber = this.accountService.getUserLoggedIn().subscribe((user: IUser) => {
       this.getAllPayments(user.condominiumId);
 
       this.paymentsService.countPayments(user.condominiumId).subscribe((total: number) => {

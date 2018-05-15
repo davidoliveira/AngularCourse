@@ -5,6 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FirstnameLastnamePipe implements PipeTransform {
   transform(value: any, args?: any): any {
+    if (value === undefined || value == null) {
+      return '';
+    }
+
     const words = value.split(' ');
     if (words.length === 1) {
       return words[0];

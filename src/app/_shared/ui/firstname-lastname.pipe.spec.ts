@@ -1,8 +1,15 @@
 import { FirstnameLastnamePipe } from './firstname-lastname.pipe';
+import { TestBed, async } from '@angular/core/testing';
 
 describe('FirstnameLastnamePipe', () => {
-  it('create an instance', () => {
-    const pipe = new FirstnameLastnamePipe();
-    expect(pipe).toBeTruthy();
+  let pipe: FirstnameLastnamePipe;
+
+  beforeEach(() => {
+    pipe = new FirstnameLastnamePipe();
   });
+
+  it('create an instance', async(() => {
+    expect(pipe).toBeTruthy();
+  }));
+
 });

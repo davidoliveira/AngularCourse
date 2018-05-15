@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../_shared/contacts.service';
 import { AccountService } from '../../_shared/account/account.service';
+import { IUser } from '../../_shared/account/models/user';
 
 @Component({
   selector: 'app-contacts-index',
@@ -18,7 +19,7 @@ export class IndexComponent implements OnInit {
 ) { }
 
 ngOnInit() {
-  this.accountService.getUserLoggedIn().subscribe((user: User) => {
+  this.accountService.getUserLoggedIn().subscribe((user: IUser) => {
     this.getAllContacts(user.condominiumId);
 
     this.contactsService.countContacts(user.condominiumId).subscribe((total: number) => {

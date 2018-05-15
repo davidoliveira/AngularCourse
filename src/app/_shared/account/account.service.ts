@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
+import { IUser, User } from './models/user';
 import { IUserLogin } from './models/user-login';
 import { IUserToken } from './models/user-token';
 import { IUserCreate } from './models/user-create';
