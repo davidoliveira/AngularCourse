@@ -1,5 +1,4 @@
 import {ErrorHandler, Injectable} from '@angular/core';
-import Crashes from 'appcenter-crashes';
 
 @Injectable()
 export class LoggerService {
