@@ -6,16 +6,16 @@
         <div class="col-6">
           <div class="form-group">
               <label for="contactFromId">Origem</label>
-              <select class="form-control" id="contactFromId">
-                <option></option>
+              <select class="form-control" id="contactFromId" [(ngModel)]="payment.contactFromId">
+                <option *ngFor="let contact of contacts; index as i" [value]="contact.id">{{contact.name}}</option>
               </select>
           </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="contactToId">Destino</label>
-                <select class="form-control" id="contactToId">
-                  <option></option>
+                <select class="form-control" id="contactToId" [(ngModel)]="payment.contactToId">
+                  <option *ngFor="let contact of contacts; index as i" [value]="contact.id">{{contact.name}}</option>
                 </select>
             </div>
         </div>

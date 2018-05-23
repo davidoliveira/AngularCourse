@@ -3,7 +3,7 @@ import { AccountService } from '../../_shared/account/account.service';
 import { PaymentsService } from '../_shared/payments.service';
 import { ContactsService } from '../../contacts/_shared/contacts.service';
 import { PaymentsControlService } from '../_shared/payments-control.service';
-import {NgbDateAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateNativeAdapter } from "../../_shared/ui/NgbDateNativeAdapter";
 
 @Component({
@@ -16,6 +16,8 @@ import { NgbDateNativeAdapter } from "../../_shared/ui/NgbDateNativeAdapter";
 export class DetailComponent implements OnInit, OnChanges {
   @Input('payment') payment: Payment = null;
   @Output() onHighlight = new EventEmitter<number>();
+
+  public contacts: Contact[];
 
   private isHighlight: boolean;
 
@@ -30,6 +32,11 @@ export class DetailComponent implements OnInit, OnChanges {
     this.paymentsControlService.paymentDeleted$.subscribe(payment => {
       this.payment = null;
     });
+
+    //this.contacts$ = this.contactsService.getAllContacts(1, 1, 1000);
+    this.contactsService.getAllContacts(1, 1, 1000).subscribe((results) => {
+      this.contacts = results;
+    });
   }
 
   remove(): void {
@@ -37,9 +44,9 @@ export class DetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(!this.payment)
+    if (!this.payment)
       return;
-    if(this.payment != null) {
+    if (this.payment != null) {
       this.onHighlight.emit(this.payment.id);
     }
   }
