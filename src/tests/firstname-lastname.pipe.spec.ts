@@ -1,4 +1,4 @@
-import { FirstnameLastnamePipe } from './firstname-lastname.pipe';
+import { FirstnameLastnamePipe } from '../app/_shared/ui/firstname-lastname.pipe';
 import { TestBed, async } from '@angular/core/testing';
 
 describe('FirstnameLastnamePipe', () => {

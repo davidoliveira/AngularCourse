@@ -1,10 +1,10 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { environment } from '../../../environments/environment';
+import { environment } from '../environments/environment';
 
-import { AccountService } from './account.service';
-import { User } from './models/user';
+import { AccountService } from '../app/_shared/account/account.service';
+import { User } from '../app/_shared/account/models/user';
 
 describe('AccountService', () => {
   let service: AccountService;
