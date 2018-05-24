@@ -1,7 +1,7 @@
 import { LoginPage } from './login.po';
 import { browser } from 'protractor';
 
-https://www.protractortest.org/#/api
+//https://www.protractortest.org/#/api
 
 describe('kondominio-app', () => {
   const username = 'app@kondominio.pt';

@@ -27,10 +27,6 @@ export class LoginPage {
     return element(by.id('login-password')).getAttribute('value');
   }
 
-  getLoginUsernameFieldValue() {
-    return element(by.id('login-email')).getAttribute('value');
-  }
-
   getLoginSubmitBtn() {
     return element(by.id('login-submit'));
   }
