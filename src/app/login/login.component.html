@@ -1,8 +1,36 @@
-<form id="login-form" (submit)="onSubmit($event)" #loginForm="ngForm">
+<!-- REACTIVE FORMS -->
+<form id="login-form" (submit)="onSubmit($event)" [formGroup]="formLogin">
   <div id="login-form-logo">
       <img src="/assets/logo-kondominio.png" alt="KONDOMINIO">
   </div>
-  <div *ngIf="displayErrorMsg" class="alert alert-danger" role="alert">
+  <div *ngIf="displayErrorMsg" id="login-error" class="alert alert-danger" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> Credenciais Erradas!
+  </div>
+  <div formGroupName="userData">
+    <div class="form-group">
+      <input id="login-email" type="email" class="form-control" placeholder="O seu email" name="email" [ngClass]="{'is-invalid': !formLogin.controls['userData'].get('username').valid && (formLogin.controls['userData'].get('username').dirty || formLogin.controls['userData'].get('username').touched)}" formControlName="username">
+      <i class="fas icon fa-user"></i>
+    </div>
+    <div class="form-group">
+      <input id="login-password" type="password" class="form-control" placeholder="A sua palavra-passe" name="password" formControlName="password">
+      <i class="fas icon fa-lock"></i>
+    </div>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="rememberMe" name="rememberMe" formControlName="rememberMe">
+    <label class="custom-control-label" for="rememberMe">Lembrar de mim?</label>
+  </div>
+  <button id="login-submit" type="submit" class="btn btn-primary" [disabled]="!formLogin.valid">Entrar »</button>
+  <p class="text-center"><a [routerLink]="['/account/create']">Não tem conta? Criar</a></p>
+</form>
+
+<!--
+  TEMPLATE DRIVEN FORMS
+  <form id="login-form" (submit)="onSubmit($event)" #loginForm="ngForm">
+  <div id="login-form-logo">
+      <img src="/assets/logo-kondominio.png" alt="KONDOMINIO">
+  </div>
+  <div *ngIf="displayErrorMsg" id="login-error" class="alert alert-danger" role="alert">
     <i class="fas fa-exclamation-triangle"></i> Credenciais Erradas!
   </div>
   <div class="form-group">
@@ -20,3 +48,4 @@
   <button id="login-submit" type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Entrar »</button>
   <p class="text-center"><a [routerLink]="['/account/create']">Não tem conta? Criar</a></p>
 </form>
+-->

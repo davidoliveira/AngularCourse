@@ -32,6 +32,10 @@ export class LoginPage {
   }
 
   getLoginErrorStatus() {
-    return element(by.css('alert alert-danger'));
+    return element(by.id('login-error'));
+  }
+
+  getPaymentRow() {
+    return element.all(by.css('payment-row')).first();
   }
 }

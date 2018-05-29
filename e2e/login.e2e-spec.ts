@@ -36,6 +36,8 @@ describe('kondominio-app', () => {
     page.getLoginSubmitBtn().click();
     browser.sleep(3000);
 
-    expect(page.getLoginErrorStatus().isPresent()).toBe(false);
+    expect(page.getLoginErrorStatus()).toBe(false);
+
+    browser.sleep(5000);
   });
 });

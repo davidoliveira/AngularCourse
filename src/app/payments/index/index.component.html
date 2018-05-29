@@ -15,7 +15,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let payment of payments" (click)="selectPayment(payment)">
+              <tr class="payment-row" *ngFor="let payment of payments" (click)="selectPayment(payment)">
                 <td>{{payment.dateOfPayment | date:'yyyy-MM-dd'}}</td>
                 <td class="text-right">{{payment.amount | currency:'EUR'}}</td>
                 <td id="payment-description-{{payment.id}}">{{payment.description}}</td>
