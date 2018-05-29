@@ -8,7 +8,7 @@
   </div>
   <div formGroupName="userData">
     <div class="form-group">
-      <input id="login-email" type="email" class="form-control" placeholder="O seu email" name="email" [ngClass]="{'is-invalid': !formLogin.controls['userData'].get('username').valid && (formLogin.controls['userData'].get('username').dirty || formLogin.controls['userData'].get('username').touched)}" formControlName="username">
+      <input id="login-email" type="email" class="form-control" placeholder="O seu email" name="email" [ngClass]="{'is-invalid': !formLogin.controls.userData.controls.username.valid && (formLogin.controls['userData'].get('username').dirty || formLogin.controls['userData'].get('username').touched)}" formControlName="username">
       <i class="fas icon fa-user"></i>
     </div>
     <div class="form-group">

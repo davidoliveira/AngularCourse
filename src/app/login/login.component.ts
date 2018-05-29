@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
   ) {
     this.formLogin = this.formBuilder.group({
       userData: this.formBuilder.group({
-        username: ['', [Validators.required, Validators.minLength(3), hasPunctuation('@', 'atRequired')]],
+        username: ['', [
+          Validators.required, 
+          Validators.minLength(3), 
+          hasPunctuation('@', 'atRequired')
+        ]],
         password: ['', [Validators.required, Validators.minLength(3)]]
       }),
       rememberMe: [true]
